@@ -1,5 +1,6 @@
 package rocks.zipcode.io.quiz3.fundamentals;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +9,34 @@ import java.util.List;
  */
 public class StringUtils {
     public static String capitalizeNthCharacter(String str, Integer indexToCapitalize) {
-        return null;
+        String captilized = str.substring(0, indexToCapitalize) +
+                str.substring(indexToCapitalize, indexToCapitalize + 1).toUpperCase() +
+                str.substring(indexToCapitalize + 1, str.length());
+
+        return captilized;
     }
 
     public static Boolean isCharacterAtIndex(String baseString, Character characterToCheckFor, Integer indexOfString) {
-        return null;
+        if (baseString.charAt(indexOfString) == characterToCheckFor) {
+            return true;
+        }
+        return false;
     }
 
     public static String[] getAllSubStrings(String string) {
-        return null;
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = i + 1; j <= string.length(); j++) {
+                temp.add(string.substring(i, j));
+            }
+        }
+
+        String[] answer = temp.toArray(new String[temp.size()]);
+        return answer;
     }
 
-    public static Integer getNumberOfSubStrings(String input){
-        return null;
+    public static Integer getNumberOfSubStrings(String input) {
+        return (input.length() * (input.length() +1)/2)-1;
     }
 }
